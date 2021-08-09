@@ -241,7 +241,6 @@ public class battleship{
     }
 
     public static void prompt(){
-
         int random = (int)(Math.random() * 7);
         switch(random){
             case 0: System.out.println("Aim your cannons!"); break;
@@ -266,7 +265,7 @@ public class battleship{
             case 4: System.out.println("You can do better than that!"); break;
             case 5: System.out.println("Is this how you plan on destroying you enemies?!"); break;
             case 6: System.out.println("Pathetic. It's just water."); break;
-            default: System.out.println("Really? Try again.");
+            default: System.err.println("Really? Try again.");
         }
         int r = (int)(Math.random() * 6);
         switch(r){
@@ -293,7 +292,7 @@ public class battleship{
             case 4: System.out.println("Avoid mines, it hurts."); break;
             case 5: System.out.println("This is self-destruction!"); break;
             case 6: System.out.println("Onboard damage and crew injuries!"); break;
-            default: System.out.println("That was bad. Try again");
+            default: System.err.println("That was bad. Try again");
         }
         points = -80;
         stealth += points; 
@@ -312,7 +311,7 @@ public class battleship{
             case 4: System.out.println("My money on you, regret nothing."); break;
             case 5: System.out.println("Way to go! Keep it up."); break;
             case 6: System.out.println("A true viking descendant!"); break;
-            default: System.out.println("Very well done. Keep going.");
+            default: System.err.println("Very well done. Keep going.");
         }
         if(lastRoundPoints == 90){
             points = 120;
@@ -465,5 +464,4 @@ public class battleship{
             discovered[0][1] = 'O';
         }
     }
-
 }
