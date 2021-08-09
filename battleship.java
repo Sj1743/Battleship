@@ -11,6 +11,7 @@ public class battleship{
     static int lastRoundPoints = 0;
     static int lastRow = 0;
     static int lastColumn = 0;
+    
     public static void main(String args[]){
 
         displayIntro();
