@@ -11,7 +11,6 @@ public class battleship{
     static int lastRoundPoints = 0;
     static int lastRow = 0;
     static int lastColumn = 0;
-    
     public static void main(String args[]){
 
         displayIntro();
@@ -241,6 +240,7 @@ public class battleship{
     }
 
     public static void prompt(){
+
         int random = (int)(Math.random() * 7);
         switch(random){
             case 0: System.out.println("Aim your cannons!"); break;
@@ -265,7 +265,7 @@ public class battleship{
             case 4: System.out.println("You can do better than that!"); break;
             case 5: System.out.println("Is this how you plan on destroying you enemies?!"); break;
             case 6: System.out.println("Pathetic. It's just water."); break;
-            default: System.err.println("Really? Try again.");
+            default: System.out.println("Really? Try again.");
         }
         int r = (int)(Math.random() * 6);
         switch(r){
@@ -292,7 +292,7 @@ public class battleship{
             case 4: System.out.println("Avoid mines, it hurts."); break;
             case 5: System.out.println("This is self-destruction!"); break;
             case 6: System.out.println("Onboard damage and crew injuries!"); break;
-            default: System.err.println("That was bad. Try again");
+            default: System.out.println("That was bad. Try again");
         }
         points = -80;
         stealth += points; 
@@ -311,7 +311,7 @@ public class battleship{
             case 4: System.out.println("My money on you, regret nothing."); break;
             case 5: System.out.println("Way to go! Keep it up."); break;
             case 6: System.out.println("A true viking descendant!"); break;
-            default: System.err.println("Very well done. Keep going.");
+            default: System.out.println("Very well done. Keep going.");
         }
         if(lastRoundPoints == 90){
             points = 120;
@@ -378,90 +378,21 @@ public class battleship{
     }
 
     public static void revealShip(){
-        if(discovered[0][1] == 'O'){
-            if(discovered[0][2] == 'O'){
-                if(discovered[0][3] == 'O'){
-                    if(discovered[1][6] == 'O'){
-                        if(discovered[2][3] == 'O'){
-                            if(discovered[2][4] == 'O'){
-                                if(discovered[2][6] == 'O'){
-                                    if(discovered[2][8] == 'O'){
-                                        if(discovered[2][9] == 'O'){
-                                            if(discovered[3][1] == 'O'){
-                                                if(discovered[3][6] == 'O'){
-                                                    if(discovered[4][1] == 'O'){
-                                                        if(discovered[5][1] == 'O'){
-                                                            if(discovered[6][3] == 'O'){
-                                                                if(discovered[6][4] == 'O'){
-                                                                    if(discovered[6][5] == 'O'){
-                                                                        if(discovered[6][6] == 'O'){
-                                                                            if(discovered[7][9] == 'O'){
-                                                                                if(discovered[8][0] == 'O'){
-                                                                                    if(discovered[8][1] == 'O'){
-                                                                                        if(discovered[8][9] == 'O'){
-                                                                                            discovered[9][9] = 'O';
-                                                                                        }else{
-                                                                                            discovered[8][9] = 'O';
-                                                                                        }
-                                                                                    }else{
-                                                                                        discovered[8][1] = 'O';
-                                                                                    }
-                                                                                }else{
-                                                                                    discovered[8][0] = 'O';
-                                                                                }
-                                                                            }else{
-                                                                                discovered[7][9] = 'O';
-                                                                            }
-                                                                        }else{
-                                                                            discovered[6][6] = 'O';
-                                                                        }
-                                                                    }else{
-                                                                        discovered[6][5] = 'O';
-                                                                    }
-                                                                }else{
-                                                                    discovered[6][4] = 'O';
-                                                                }
-                                                            }else{
-                                                                discovered[6][3] = 'O';
-                                                            }
-                                                        }else{
-                                                            discovered[5][1] = 'O';
-                                                        }
-                                                    }else{
-                                                        discovered[4][1] = 'O';
-                                                    }
-                                                }else{
-                                                    discovered[3][6] = 'O';
-                                                }
-                                            }else{
-                                                discovered[3][1] = 'O';
-                                            }
-                                        }else{
-                                            discovered[2][9] = 'O';
-                                        }
-                                    }else{
-                                        discovered[2][8] = 'O';
-                                    }
-                                }else{
-                                    discovered[2][6] = 'O';
-                                }
-                            }else{
-                                discovered[2][4] = 'O';
-                            }
-                        }else{
-                            discovered[2][3] = 'O';
-                        }
+        boolean revealed = false;
+        for(int x = 0; x < 10; x++){
+            for(int y = 0; y < 10; y++){
+                if(field[x][y] == 'O'){
+                    if(discovered[x][y] == 'O'){
+                        continue;
                     }else{
-                        discovered[1][6] = 'O';
+                        discovered[x][y] = 'O';
+                        revealed = true;
+                        break;
                     }
-                }else{
-                    discovered[0][3] = 'O';
                 }
-            }else{
-                discovered[0][2] = 'O';
             }
-        }else{
-            discovered[0][1] = 'O';
+            if(revealed == true)
+                break;
         }
     }
 }
