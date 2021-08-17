@@ -1,3 +1,10 @@
+/*  
+    To edit:-
+    assignShips()
+    assignMines()
+    allShipsHit()
+*/
+
 import java.util.*;
 
 public class battleship{
@@ -15,8 +22,7 @@ public class battleship{
 
         displayIntro();
         assignWater();
-        assignShips();
-        assignMines();
+        assignShipsAndMines();
         
         while(allShipsHit() == false || stealth > 0){
 
@@ -79,44 +85,13 @@ public class battleship{
         }
     }
 
-    public static void assignShips(){
-        field[0][1] = 'O';
-        field[0][2] = 'O';
-        field[0][3] = 'O';
-        field[1][6] = 'O';
-        field[2][3] = 'O';
-        field[2][4] = 'O';
-        field[2][6] = 'O';
-        field[2][8] = 'O';
-        field[2][9] = 'O';
-        field[3][1] = 'O';
-        field[3][6] = 'O';
-        field[4][1] = 'O';
-        field[5][1] = 'O';
-        field[6][3] = 'O';
-        field[6][4] = 'O';
-        field[6][5] = 'O';
-        field[6][6] = 'O';
-        field[7][9] = 'O';
-        field[8][0] = 'O';
-        field[8][1] = 'O';
-        field[8][9] = 'O';
-        field[9][9] = 'O';
-    }
-
-    public static void assignMines(){
-        field[1][3] = '*';
-        field[2][1] = '*';
-        field[2][2] = '*';
-        field[2][5] = '*';
-        field[2][7] = '*';
-        field[3][9] = '*';
-        field[4][6] = '*';
-        field[5][5] = '*';
-        field[6][7] = '*';
-        field[7][3] = '*';
-        field[8][6] = '*';
-        field[9][0] = '*';
+    public static void assignShipsAndMines(){
+        int random = (int)(Math.random() * 3);
+        switch(random){
+            case 1: variation0(); break;
+            case 2: variation1(); break;
+            default: variation0(); 
+        }
     }
 
     public static void printField(){
@@ -154,41 +129,31 @@ public class battleship{
     }
 
     public static boolean allShipsHit(){
-        if(discovered[0][1] == 'O' && discovered[0][2] == 'O' && discovered[0][3] == 'O' && discovered[1][6] == 'O' 
-        && discovered[2][3] == 'O' &&  discovered[2][4] == 'O' && discovered[2][6] == 'O' && discovered[2][8] == 'O'
-        && discovered[2][9] == 'O' && discovered[3][1] == 'O' && discovered[3][6] == 'O' && discovered[4][1] == 'O'
-        && discovered[5][1] == 'O' && discovered[6][3] == 'O' && discovered[6][4] == 'O' && discovered[6][5] == 'O'
-        && discovered[6][6] == 'O' && discovered[7][9] == 'O' && discovered[8][0] == 'O' && discovered[8][1] == 'O'
-        && discovered[8][9] == 'O' && discovered[9][9] == 'O'){
-            return true;
-        }else{
-            return false;
+        boolean hit = true;
+        for(int x = 0; x < 10; x++){
+            for(int y = 0; y < 10; y++){
+                if(field[x][y] == 'O'){
+                    if(discovered[x][y] == 'O'){
+                        continue;
+                    }else{
+                        hit = false; 
+                        break;
+                    }
+                }
+            }
+            if(hit == false)
+                return hit;
         }
+        return hit;
     }
 
     public static void beta(){
-        discovered[0][1] = 'O';
-        discovered[0][2] = 'O'; 
-        discovered[0][3] = 'O';
-        discovered[1][6] = 'O';
-        discovered[2][3] = 'O';
-        discovered[2][4] = 'O';
-        discovered[2][6] = 'O';
-        discovered[2][8] = 'O';
-        discovered[2][9] = 'O';
-        discovered[3][1] = 'O';
-        discovered[3][6] = 'O';
-        discovered[4][1] = 'O';
-        discovered[5][1] = 'O';
-        discovered[6][3] = 'O';
-        discovered[6][4] = 'O';
-        discovered[6][5] = 'O';
-        discovered[6][6] = 'O';
-        discovered[7][9] = 'O';
-        discovered[8][0] = 'O';
-        discovered[8][1] = 'O';
-        discovered[8][9] = 'O';
-        discovered[9][9] = 'O';
+        for(int x = 0; x < 10; x++){
+            for(int y = 0; y < 10; y++){
+                if(field[x][y] == 'O')
+                    discovered[x][y] = 'O';
+            }
+        }
     }
 
     public static int getRow(){
@@ -395,4 +360,79 @@ public class battleship{
                 break;
         }
     }
+
+    public static void variation0(){
+        field[0][1] = 'O';
+        field[0][2] = 'O';
+        field[0][3] = 'O';
+        field[1][6] = 'O';
+        field[2][3] = 'O';
+        field[2][4] = 'O';
+        field[2][6] = 'O';
+        field[2][8] = 'O';
+        field[2][9] = 'O';
+        field[3][1] = 'O';
+        field[3][6] = 'O';
+        field[4][1] = 'O';
+        field[5][1] = 'O';
+        field[6][3] = 'O';
+        field[6][4] = 'O';
+        field[6][5] = 'O';
+        field[6][6] = 'O';
+        field[7][9] = 'O';
+        field[8][0] = 'O';
+        field[8][1] = 'O';
+        field[8][9] = 'O';
+        field[9][9] = 'O';
+        field[1][3] = '*';
+        field[2][1] = '*';
+        field[2][2] = '*';
+        field[2][5] = '*';
+        field[2][7] = '*';
+        field[3][9] = '*';
+        field[4][6] = '*';
+        field[5][5] = '*';
+        field[6][7] = '*';
+        field[7][3] = '*';
+        field[8][6] = '*';
+        field[9][0] = '*';
+    }
+
+    public static void variation1(){
+        field[0][9] = 'O';
+        field[1][2] = 'O';
+        field[1][3] = 'O';
+        field[1][4] = 'O';
+        field[1][9] = 'O';
+        field[2][6] = 'O';
+        field[2][7] = 'O';
+        field[2][9] = 'O';
+        field[3][3] = 'O';
+        field[3][9] = 'O';
+        field[4][3] = 'O';
+        field[5][3] = 'O';
+        field[5][7] = 'O';
+        field[5][8] = 'O';
+        field[6][1] = 'O';
+        field[7][1] = 'O';
+        field[7][3] = 'O';
+        field[7][4] = 'O';
+        field[7][5] = 'O';
+        field[9][5] = 'O';
+        field[9][6] = 'O';
+        field[9][7] = 'O';
+        field[1][5] = '*';
+        field[2][3] = '*';
+        field[2][8] = '*';
+        field[4][5] = '*';
+        field[4][9] = '*';
+        field[5][1] = '*';
+        field[5][9] = '*';
+        field[6][3] = '*';
+        field[7][2] = '*';
+        field[7][7] = '*';
+        field[9][4] = '*';
+        field[9][8] = '*';
+    }
+
 }
