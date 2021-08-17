@@ -1,10 +1,3 @@
-/*  
-    To edit:-
-    assignShips()
-    assignMines()
-    allShipsHit()
-*/
-
 import java.util.*;
 
 public class battleship{
