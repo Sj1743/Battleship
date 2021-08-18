@@ -13,9 +13,11 @@ To execute, download the compiled .class file and run on cmd or any application 
 
 2. Plot ships, mines, & water in the grid squares. 
     Use the following symbols:
+    ```
     O - ship
     * - mine
     ~ - water
+    ```
   However, there are a few things to keep in mind while strategically plotting the elements:-
   A. There must 8 enemy ships that occupy 22 grid squares in total. The distribution of ships with respect to their lengths are:
       i. 3 ships that are 2 units long
