@@ -40,4 +40,4 @@ To execute, download the compiled .class file and run on cmd or any application 
    
 4. Issue a pull request for a .txt file with the above assingments, 34 in all. Also include the grid as an image.
 
-*That's it! If all the aboce criteria are met, this field will be included as a variation in Battleship!*
+That's it! If all the above criteria are met, this field will be included as a variation in Battleship!
